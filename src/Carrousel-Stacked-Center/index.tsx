@@ -77,7 +77,7 @@ export default function ResponsiveCarousel() {
         <button
           className="button left"
           onClick={() => {
-            ref.current?.goBack();
+            ref.current?.goNext();
           }}
           >
           <LuArrowRight fontSize={20} color="white"/>
@@ -85,7 +85,7 @@ export default function ResponsiveCarousel() {
         <button
           className="button right"
           onClick={() => {
-            ref.current?.goNext();
+            ref.current?.goBack();
           }}
         >
           <LuArrowLeft fontSize={20} color="white"/>
