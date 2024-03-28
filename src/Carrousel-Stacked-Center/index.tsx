@@ -55,7 +55,7 @@ export default function ResponsiveCarousel() {
   const ref = React.useRef<any>();
   
   return (  
-    <div style={{ width: "100%", position: "relative" }}>
+    <div style={{ width: "100%", height: '350px', position: "relative", border: '1px solid black' }}>
       <ResponsiveContainer
         carouselRef={ref}
         render={(parentWidth, carouselRef) => {
@@ -102,7 +102,7 @@ const Slide = React.memo(function (props: any) {
 
   return (
     <div className='card' draggable={false}>
-      <div className={`cover fill`}>
+      <div className={`cover`}>
         <div
           className='card-overlay fill'
           onClick={() => {
