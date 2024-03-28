@@ -1,7 +1,6 @@
 import './index.css'
 import { LuArrowLeft, LuArrowRight } from 'react-icons/lu'
-import { useState } from 'react';
-import clsx from 'clsx'
+import { useEffect, useState } from 'react';
 
 const data = [
   {
@@ -46,70 +45,46 @@ const data = [
   },
 ];
 
-interface Image {
-  cover: string
-  title: string
-}
-
 export const Carousel = () => {
-  const [slide, setSlide] = useState(0)
-  
+  const [slide, setSlide] = useState(0);
+  const [images, setImages] = useState<string[]>([]);
+
+  const updateImages = () => {
+    const prevIndex = (slide - 1 + data.length) % data.length;
+    const nextIndex = (slide + 1) % data.length;
+
+    // Define as imagens a serem exibidas
+    const prevImage = data[prevIndex].cover;
+    const currentImage = data[slide].cover;
+    const nextImage = data[nextIndex].cover;
+
+    // Atualiza o array de imagens
+    setImages([prevImage, currentImage, nextImage]);
+  };
+
   const nextSlide = () => {
-    setSlide(slide === data.length - 1 ? 0 : slide + 1)
-  }
+    setSlide((slide + 1) % data.length);
+  };
 
   const prevSlide = () => {
-    setSlide(slide === 0 ? data.length - 1 : slide - 1)
-  }
+    setSlide((slide - 1 + data.length) % data.length);
+  };
 
-  // const getClassName = (index) => {
-  //   const next = (slide + 1) % data.length;
-  //   const prev = (slide - 1 + data.length) % data.length;
-
-  //   if (index === slide) {
-  //     return 'slide slide-center';
-  //   } else if (index === prev || index === next) {
-  //     return 'slide slide-side';
-  //   } else {
-  //     return 'slide slide-hidden';
-  //   }
-  // }
+  useEffect(() => {
+    updateImages();
+  }, [slide]);
 
   return (
     <div className="carousel">
-      <LuArrowRight size={10} className='arrow arrow-right' onClick={nextSlide}/>
-      
-      {data.map(({ cover, title }: Image, index: number) => {
-        const next = slide + 1;
-        const prev = slide - 1;
-
-        const className = clsx({
-          'slide': index === slide,
-          'slide slide-side': index === prev || index === next || (index === 0 && slide === data.length - 1) || (index === data.length - 1 && slide === 0),
-          'slide-hidden': index !== slide && index !== prev && index !== next && !(index === 0 && slide === data.length - 1) && !(index === data.length - 1 && slide === 0),
-        });
-        return (
+      <LuArrowLeft size={10} className='arrow arrow-left' onClick={prevSlide}/>
+        {images.map((cover, index) => (
           <img
             src={cover}
-            alt={title}
-            key={index + 2}
-            className={className}
-          />
-        )
-      })}
-      
-      <LuArrowLeft size={10} className='arrow arrow-left' onClick={prevSlide}/>
-      
-      <span className='indicators'>
-        {data.map((_, index: number) => {
-          return <button
             key={index}
-            className={ slide === index ? 'indicator' : 'indicator indicator-inactive' }
-            onClick={ () => setSlide(index) }
+            className={`slide ${index === 1 ? 'slide-center' : 'slide-side'}`}
           />
-        })}
-      </span>
+        ))}
+      <LuArrowRight size={10} className='arrow arrow-right' onClick={nextSlide}/>
     </div>
-  )
-}
-
+  );
+};
