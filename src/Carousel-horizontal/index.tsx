@@ -1,7 +1,6 @@
 import './index.css'
 import { LuArrowLeft, LuArrowRight } from 'react-icons/lu'
 import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
 
 
 const data = [
@@ -56,7 +55,7 @@ export const CarouselHorizontal = () => {
   });
 
   return (
-    <div className="w-[350px] h-[400px]">
+    <div className=" border-2 border-black">
       <LuArrowLeft size={10} className='hidden'/>
       <div ref={sliderRef} className="keen-slider">
         {data.map((img, index) => (
