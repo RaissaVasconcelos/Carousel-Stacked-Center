@@ -58,7 +58,7 @@
   opacity: 0;
 }
 
-.navigation:hover {
+.navigation-visible {
   opacity: 1;
 }
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import './index.css'
 import { useKeenSlider } from "keen-slider/react";
 
@@ -46,6 +47,7 @@ const data = [
 ];
 
 export const CarouselHorizontal = () => {
+  const [showNavigation, setShowNavigation] = useState(false);
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     // slideChanged(slider) {
@@ -53,9 +55,26 @@ export const CarouselHorizontal = () => {
     // },
   });
 
+  useEffect(() => {
+    const handleTouchStart = () => {
+      setShowNavigation(true);
+      const timer = setTimeout(() => {
+        setShowNavigation(false);
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    };
+
+    document.addEventListener('touchstart', handleTouchStart);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, []);
+
   return (
     <div className='carousel-container'>
-      <div className='navigation left'>
+      <div className={`navigation left ${showNavigation && 'navigation-visible'}`}>
       <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
         <path d="M17.5742 11.9355H4.71643" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M11.1445 5.50586L4.71564 11.9348L11.1445 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
@@ -73,7 +92,7 @@ export const CarouselHorizontal = () => {
         ))}
       </div> 
 
-      <div className='navigation right'>
+      <div className={`navigation right ${showNavigation && 'navigation-visible'}`}>
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
           <path d="M5.37109 11.9355H18.2289" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M11.7988 5.50586L18.2277 11.9348L11.7988 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
