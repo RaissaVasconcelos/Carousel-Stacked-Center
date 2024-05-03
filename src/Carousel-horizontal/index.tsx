@@ -60,7 +60,7 @@ export const CarouselHorizontal = () => {
       setShowNavigation(true);
       const timer = setTimeout(() => {
         setShowNavigation(false);
-      }, 3000)
+      }, 1000)
 
       return () => clearTimeout(timer)
     };
