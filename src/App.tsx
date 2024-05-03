@@ -1,12 +1,9 @@
-// import ResponsiveCarousel from "./Carrousel-Stacked-Center"
-import { Carousel } from './Carousel-Center'
+import { CarouselHorizontal } from './Carousel-horizontal'
 
 function App() {
   return (
-    <div
-      style={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-    >
-      <Carousel />
+    <div style={{ width: 500, height: 500 }}>
+      <CarouselHorizontal />
     </div>
   )
 }
