@@ -1,26 +1,37 @@
+.carousel-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border: 2px solid black;
+}
+
 .keen-slider:not([data-keen-slider-disabled]){
+  /* remove o menu de contexto do safari */
   -webkit-touch-callout:none;
+  /* remove o destaque padrão de alguns navegadores quando o elemento é clicado */
   -webkit-tap-highlight-color:transparent;
-  align-content:flex-start;
+  width:100%;
   display:flex;
+  align-content:flex-start;
   gap:10px;
   overflow:hidden;
-  position:relative;
   touch-action:pan-y;
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
   -khtml-user-select:none;
-  width:100%;
 }
 
 .keen-slider:not([data-keen-slider-disabled])
+
 .keen-slider__slide{
-  min-height:100%;
-  overflow:hidden;
-  position:relative;
-  width:100%;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
 }
 
 .keen-slider:not([data-keen-slider-disabled])[data-keen-slider-reverse]{
@@ -30,3 +41,30 @@
 .keen-slider:not([data-keen-slider-disabled])[data-keen-slider-v]{
   flex-wrap:wrap;
 }
+
+.navigation {
+  /* visibility: visible; */
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 50%;
+  border-radius: 100%;
+  padding: 5px;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigation.left {
+  left: 1%;
+}
+
+.navigation.right {
+  right: 1%;
+}
+
+
+/* .keen-slider:hover .navigate {
+  visibility: visible;
+} */

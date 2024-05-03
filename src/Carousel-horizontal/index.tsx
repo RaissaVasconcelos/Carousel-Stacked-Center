@@ -1,5 +1,4 @@
 import './index.css'
-import { LuArrowLeft, LuArrowRight } from 'react-icons/lu'
 import { useKeenSlider } from "keen-slider/react";
 
 
@@ -55,18 +54,32 @@ export const CarouselHorizontal = () => {
   });
 
   return (
-    <div className=" border-2 border-black">
-      <LuArrowLeft size={10} className='hidden'/>
+    <div className='carousel-container'>
+      <div className='navigation left'>
+      <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
+        <path d="M17.5742 11.9355H4.71643" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11.1445 5.50586L4.71564 11.9348L11.1445 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+
+      </div> 
+
       <div ref={sliderRef} className="keen-slider">
         {data.map((img, index) => (
           <img
-            src={img.cover}
+            src={img.cover} 
             key={index}
             className={`keen-slider__slide`}
           />
         ))}
-      </div>
-      <LuArrowRight size={10} className='hidden'/>
+      </div> 
+
+      <div className='navigation right'>
+        <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <path d="M5.37109 11.9355H18.2289" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11.7988 5.50586L18.2277 11.9348L11.7988 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>  
     </div>
+  
   );
 };
