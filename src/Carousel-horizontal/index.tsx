@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './index.css'
 import { useKeenSlider } from "keen-slider/react";
 
@@ -48,6 +48,7 @@ const data = [
 
 export const CarouselHorizontal = () => {
   const [showNavigation, setShowNavigation] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     // slideChanged(slider) {
@@ -58,22 +59,38 @@ export const CarouselHorizontal = () => {
   useEffect(() => {
     const handleTouchStart = () => {
       setShowNavigation(true);
-      const timer = setTimeout(() => {
-        setShowNavigation(false);
-      }, 1000)
+    };
 
-      return () => clearTimeout(timer)
+    const handleTouchEnd = () => {
+      setShowNavigation(false);
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      const container = carouselRef.current;
+      if (container) {
+        const touch = event.touches[0];
+        const rect = container.getBoundingClientRect();
+        if (touch.clientX < rect.left || touch.clientX > rect.right || touch.clientY < rect.top || touch.clientY > rect.bottom) {
+          setShowNavigation(false);
+        } else {
+          setShowNavigation(true);
+        }
+      }
     };
 
     document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('touchmove', handleTouchMove);
 
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, []);
 
   return (
-    <div className='carousel-container'>
+    <div className='carousel-container' ref={carouselRef}>
       <div className={`navigation left ${showNavigation && 'navigation-visible'}`}>
       <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
         <path d="M17.5742 11.9355H4.71643" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
