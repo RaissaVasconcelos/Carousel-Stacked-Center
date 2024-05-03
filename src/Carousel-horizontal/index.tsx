@@ -90,18 +90,6 @@ export const CarouselHorizontal = () => {
   }, []);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
       <div className='carousel-container' ref={carouselRef}>
         <div className={`navigation left ${showNavigation && 'navigation-visible'}`}>
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
@@ -129,18 +117,5 @@ export const CarouselHorizontal = () => {
         </div>
 
       </div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>
-      <div className='box'>1</div>  
-    </div>
-    
   );
 };
