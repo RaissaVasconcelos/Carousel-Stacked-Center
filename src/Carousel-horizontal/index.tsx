@@ -90,32 +90,57 @@ export const CarouselHorizontal = () => {
   }, []);
 
   return (
-    <div className='carousel-container' ref={carouselRef}>
-      <div className={`navigation left ${showNavigation && 'navigation-visible'}`}>
-      <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
-        <path d="M17.5742 11.9355H4.71643" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M11.1445 5.50586L4.71564 11.9348L11.1445 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-
-      </div> 
-
-      <div ref={sliderRef} className="keen-slider">
-        {data.map((img, index) => (
-          <img
-            src={img.cover} 
-            key={index}
-            className={`keen-slider__slide`}
-          />
-        ))}
-      </div> 
-
-      <div className={`navigation right ${showNavigation && 'navigation-visible'}`}>
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='carousel-container' ref={carouselRef}>
+        <div className={`navigation left ${showNavigation && 'navigation-visible'}`}>
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
-          <path d="M5.37109 11.9355H18.2289" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M11.7988 5.50586L18.2277 11.9348L11.7988 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17.5742 11.9355H4.71643" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11.1445 5.50586L4.71564 11.9348L11.1445 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </div>  
+
+        </div> 
+
+        <div ref={sliderRef} className="keen-slider">
+          {data.map((img, index) => (
+            <img
+              src={img.cover} 
+              key={index}
+              className={`keen-slider__slide`}
+            />
+          ))}
+        </div> 
+
+        <div className={`navigation right ${showNavigation && 'navigation-visible'}`}>
+          <svg width="23" height="23" viewBox="0 0 23 23" fill="none">
+            <path d="M5.37109 11.9355H18.2289" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11.7988 5.50586L18.2277 11.9348L11.7988 18.3636" stroke="white" stroke-width="2.402" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+      </div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>
+      <div className='box'>1</div>  
     </div>
-  
+    
   );
 };
