@@ -1,9 +1,10 @@
-import Modal from './components/Modal'
+// import Modal from './components/Modal'
+import { Calendar } from './Calendar'
 
 function App() {
   return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <Modal />
+    <div>
+      <Calendar />
     </div>
   )
 }
